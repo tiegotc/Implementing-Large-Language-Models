@@ -24,7 +24,7 @@ parser.add_argument('--clabels',
 
 def run(args):
         model = LLMS(input_sentence=args.input_text, input_list=args.input_list, clabels=args.clabels)
-        # model.sentiment_analyser()
+        model.sentiment_analyser()
         model.zeroshot_classifier()
 
 if __name__ == "__main__":
