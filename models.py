@@ -11,8 +11,8 @@ class LLMS:
     def sentiment_analyser(self):
         print('Running sentiment analysis...\n')
         generator = pipeline("sentiment-analysis")
-        print('-----------------------\n')
-        print('input text:', self.input_txt[0])
+        print('------------------------\n')
+        print('input text:', self.input_txt)
         print('Sentiment:', generator(self.input_txt)[0]['label'])
         print('Score:', round(generator(self.input_txt)[0]['score'], 2) * 100, '\n')
         print('------------------------\n')
