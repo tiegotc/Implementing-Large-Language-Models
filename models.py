@@ -22,6 +22,5 @@ class LLMS:
                             clabels=["education", "politics", "business"]):
         print('Running zero-shot-classification...\n')
         classifier = pipeline(task)
-        for review in self.review_list:
-            result = classifier(sequences=review, candidate_labels=clabels,)
-            print(result)
+        result = classifier(sequences=self.review_list, candidate_labels=clabels,)
+        print(result)
