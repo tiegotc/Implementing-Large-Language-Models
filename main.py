@@ -13,14 +13,18 @@ parser.add_argument('--input_text',
                     type=str, 
                     default=inputs['input_sentence'],
                     help='Input text to pass into the sentiment analyser.')
-parser.add_argument('--review_list', 
+parser.add_argument('--input_list', 
                     type=list, 
-                    default=inputs['review_list'],
-                    help='A list of reviews that you want to check the sentiment for iteratively.')
+                    default=inputs['input_list'],
+                    help='A list of academia related sentences that the model will try to classify iteratively.')
+parser.add_argument('--clabels', 
+                    type=list, 
+                    default=inputs['clabels'],
+                    help='A list of academia related classes to bucket the input_list items into.')
 
 def run(args):
-        model = LLMS(input_sentence=args.input_text, review_list=args.review_list)
-        model.sentiment_analyser()
+        model = LLMS(input_sentence=args.input_text, input_list=args.input_list, clabels=args.clabels)
+        # model.sentiment_analyser()
         model.zeroshot_classifier()
 
 if __name__ == "__main__":
