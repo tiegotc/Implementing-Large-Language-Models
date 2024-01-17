@@ -4,9 +4,10 @@ import warnings
 warnings.filterwarnings('ignore')
 
 class LLMS:
-    def __init__(self, input_sentence: str, review_list: list):
+    def __init__(self, input_sentence: str, input_list: list, clabels: list):
         self.input_txt = input_sentence
-        self.review_list = review_list
+        self.input_list = input_list
+        self.clabels = clabels
 
     def sentiment_analyser(self):
         print('Running sentiment analysis...\n')
@@ -18,9 +19,8 @@ class LLMS:
         print('------------------------\n')
 
     def zeroshot_classifier(self, 
-                            task="zero-shot-classification",
-                            clabels=["education", "politics", "business"]):
+                            task="zero-shot-classification"):
         print('Running zero-shot-classification...\n')
         classifier = pipeline(task)
-        result = classifier(sequences=self.review_list, candidate_labels=clabels,)
+        result = classifier(sequences=self.input_list, candidate_labels=self.clabels)
         print(result)
